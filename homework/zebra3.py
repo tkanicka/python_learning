@@ -6,6 +6,6 @@ def zebra_2(x,y):
             print(pattern[i % len(pattern)], end='')
         z+=1
         print("\n")
-x=int(input("give me a number of charcters for the collums:" ))
-y=int(input("give me a number of charcters for the rows:" ))
+x=int(input("give me a number of charcters in the row:" ))
+y=int(input("give me a number of rows:" ))
 zebra_2(x,y)
