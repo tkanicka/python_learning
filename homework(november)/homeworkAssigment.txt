@@ -1,0 +1,84 @@
+//////////////////////////
+Úkol šachovnice
+
+***---***---
+***---***---
+***---***---
+---***---***
+---***---***
+---***---***
+***---***---
+***---***---
+***---***---
+---***---***
+---***---***
+---***---***
+
+velikost políèka = 3
+velikost šachovnice = 4
+
+"sanitize yuor inputs"
+
+//////////////////////////
+
+Úkol kosoètveres
+
+---*---
+--***--
+-*****-
+*******
+-*****-
+--***--
+---*---
+
+platný vstup je liché èíslo
+velikost = 7
+
+*
+velikost = 1
+
+-*-
+***
+-*-
+
+velikost = 3
+
+//////////////////////////
+
+Bonus úloha - šachovnice kosoètvercù
+
+Nápovìda: Nevypisuj to rovnou na výstup. Vypisuj si to po blocích do 2D 
+listu (bufferu) a ten pak vypiš nakonec.
+
+//////////////////////////
+
+Úloha tøídy
+
+Vyzkoušej si hlubokou kopii objektu
+https://docs.python.org/3.7/library/copy.html
+
+
+//////////////////////////
+
+Úloha tøídy AUTO
+
+Uprav tøídu auta aby mìla "member variables"
+   rychlost
+   spotøeba
+
+Uprav tøídu auta aby se umìla hezky vypsat.
+Uprav ji tak aby umìla zrycholvat a zpomalovat (v km/h). Maximální 
+rychlost je 200 km/h. Minimální je 0.
+
+Životnost instancí objektù:
+Udìlej funkci která bere jako parametr Auto (referencí) a nìjak jej zmìní.
+Udìlej funkci který vrací novou instanci Auto. Instance vznikne ivnitøe 
+fukce. Použij jí.
+Udìlej funkci která si uvnitø udìlá auto které použiji ale které 
+nevrátí. Sleduj pomocí destruktoru zda instance Auto zanikne s konce funkce.
+
+//////////////////////////
+
+Napiš funkci na prvoèíslený rozklad složených èísel.
+
+//////////////////////////
