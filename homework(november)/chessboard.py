@@ -26,7 +26,7 @@ def chessboard(x,y):
 
         rowNumber += 1
 
-
+print("Your inputs should be positive integers...")
 x=int(input("field size:" ))
 y=int(input("chessboard size(number of fields in one row: " ))
 chessboard(x,y)
