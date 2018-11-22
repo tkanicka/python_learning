@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 x = int(input("first number: "))
 y = int(input("second number: "))
@@ -8,6 +9,19 @@ def GCD(x,y):
            gcd = divisor
     return gcd
 
+=======
+
+x = int(input("first number: "))
+y = int(input("second number: "))
+
+def GCD(x,y):
+    smallerNumber = min(abs(x),abs(y))
+    for divisor in range(1,smallerNumber + 1):
+        if x % divisor == 0 and y % divisor == 0:
+           gcd = divisor
+        return gcd
+
+>>>>>>> c2fdbd94105ecba93580212795143449b6e29850
 def GCD_recursion(x,y):
 
     higher_number = max(abs(x), abs(y))
@@ -20,6 +34,9 @@ def GCD_recursion(x,y):
         return GCD_recursion(smaller_number, higher_number % smaller_number)
 
 print(" greatest common divisor of your imputs is: ", GCD(x,y),",", GCD_recursion(x,y))
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> c2fdbd94105ecba93580212795143449b6e29850
