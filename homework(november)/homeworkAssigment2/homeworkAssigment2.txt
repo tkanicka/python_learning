@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //////////////////////////
 
 Šachovnice kosočtverců
@@ -61,67 +61,3 @@ https://pythonspot.com/polymorphism/
 Pokud to nebudeš chápat, zeptej se mě.
 
 //////////////////////////
-=======
-//////////////////////////
-
-Šachovnice kosočtverců
-
-velikost kosočterce: x
-velikost šachovnice: y
-
-Nápověda: Nevypisuj to rovnou na výstup. Vypisuj si to po blocích do 2D listu (bufferu) a ten pak vypiš nakonec. 
-
-//////////////////////////
-
-Kružnice
-
-Vypiš na výstup kružnici z hvězdiček se středem uprostřed čtvercového "pátna" (canvas)
-
-velikost plátna: liché číslo x
-poloměr kružnice: y
-
-Nápověda: To samé jako v předchozím úkolu. Udělej si 2D list a pro každý jeho bod zjisti zda leží na kružnici nebo ne.
-          Asi budeš muset dát kontrole, zda je bod na kružnici, nějakou toleranci.
-		  
-//////////////////////////
-
-Bonus úloha
-Protože výsledek předchozí úlohy bude nevyhnutelně vypadat trochu ošklivě kvůli jevu zvanému "aliasing", 
-zkus implementovat "Midpoint circle algorithm".
-
-https://en.wikipedia.org/wiki/Aliasing
-https://en.wikipedia.org/wiki/Midpoint_circle_algorithm
-
-//////////////////////////
-
-Bonus úloha
-
-Vypiš ty generované obrázky do souboru. 
-https://docs.python.org/3.7/tutorial/inputoutput.html
-
-//////////////////////////
-
-Napiš LCM (least common multiple) a GCD (greatest common divisor)
-
-https://en.wikipedia.org/wiki/Least_common_multiple
-https://en.wikipedia.org/wiki/Euclidean_algorithm
-
-//////////////////////////
-
-Vyzkoušej si dědičnost objektů (inheritance)
-
-https://pythonspot.com/inheritance/
-
-a přetěžování (overriding) metod (member funcions)
-http://blog.thedigitalcatonline.com/blog/2014/05/19/method-overriding-in-python/
-
-na našem příkladu s autíčkem, letadlem a dopravními prostředky.
-
-Vyzkoušej si polymiphismus.
-
-https://pythonspot.com/polymorphism/
-
-Pokud to nebudeš chápat, zeptej se mě.
-
-//////////////////////////
->>>>>>> d6b8dd329dc89831c2eea24a7648b6d1a22cdd48
