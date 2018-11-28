@@ -9,7 +9,6 @@ def GCD(x,y):
            gcd = divisor
     return gcd
 
-
 def GCD_recursion(x,y):
 
     higher_number = max(abs(x), abs(y))
