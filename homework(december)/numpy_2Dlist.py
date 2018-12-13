@@ -11,7 +11,7 @@ for y in range(0, row):
     v = y*column
     x = (y+1) * column
     c = []
-    for z in range(v,x):
+    for z in range(v, x):
         c.append(z)
     a[y] = c
 
