@@ -1,12 +1,11 @@
-udìlat funkce na pøeklad z int do roman a z roman do int
+udÄ›lat funkce na pÅ™eklad z int do roman a z roman do int
 ////////////////////
-ELIPSU.....nevykašlat se na to jenom proto, že to bude pracný!!!
+ELIPSU.....nevykaÅ¡lat se na to jenom proto, Å¾e to bude pracnÃ½!!!
 ///////////////////
-práce s CSV files
-vytvoøit CSV z python souboru a dostat ho do excelu....pø. program s random numbers na stáž
+prÃ¡ce s CSV files
+vytvoÅ™it CSV z python souboru a dostat ho do excelu....pÅ™. program s random numbers na stÃ¡Å¾
 dostat CSV soubor do pythonu
 ///////////////////
-najít si jiné než equaly random distributed random nubers
-vytvoøit je z tìch equaly distributed
-....celkovì se trochu pøivzdìlat v matice (pravdìpodobnost, statistika)
+vytvoÅ™it exponencialy distributed random numbers z equaly distributed
+....celkovÄ› se trochu pÅ™ivzdÄ›lat v matice (pravdÄ›podobnost, statistika)
 
