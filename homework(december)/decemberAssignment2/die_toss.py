@@ -59,12 +59,44 @@ def TossDie_influenced4():
         x += 1
 
 
-def plot_histogram(functionName):
+def TossDie_infliencedExp():
+
+    return random.randint(1, TossDie_regular())
+
+
+def TossFiveSideDie_uniform():
+
+    while True:
+        x = TossDie_regular()
+
+        if x <= 5:
+            return x
+
+
+def TossSevenSideDie_uniform():
+
+    # function returning uniformly random 2 bits of entropy as 1 to 4
+    def TwoRandomBits():
+
+        while True:
+            x = TossDie_regular()
+            if x <= 4:
+                return x - 1
+
+    while True:
+        # random numbers from 0 to 15 (4 bits of entropy)
+        largerUniformRandomNumber = (TwoRandomBits() << 2) | TwoRandomBits()
+
+        if largerUniformRandomNumber <= 6:
+            return largerUniformRandomNumber + 1
+
+
+def plot_histogram(functionName, n = 6):
 
     generated_values = []
     for i in range(10**4):
         generated_values.append(functionName())
-    plt.hist(generated_values, 6, rwidth=0.9)
+    plt.hist(generated_values, n, rwidth=0.9)
     plt.grid(True)
     plt.xlabel("values")
     plt.ylabel("number of generated values")
@@ -77,10 +109,22 @@ print(TossDie_regular())
 print(TossDie_influenced1())
 print(TossDie_influenced2())
 print(TossDie_influenced3())
+<<<<<<< HEAD
 print(TossDie_influenced4())
+=======
+print(TossDie_infliencedExp())
+print(TossFiveSideDie_uniform())
+print(TossSevenSideDie_uniform())
+>>>>>>> f437b6ad6f43738d377ab5839c0c178b59d5cd2f
 
 plot_histogram(TossDie_regular)
 plot_histogram(TossDie_influenced1)
 plot_histogram(TossDie_influenced2)
 plot_histogram(TossDie_influenced3)
+<<<<<<< HEAD
 plot_histogram(TossDie_influenced4)
+=======
+plot_histogram(TossDie_infliencedExp)
+plot_histogram(TossFiveSideDie_uniform, 5)
+plot_histogram(TossSevenSideDie_uniform, 7)
+>>>>>>> f437b6ad6f43738d377ab5839c0c178b59d5cd2f

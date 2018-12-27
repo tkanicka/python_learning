@@ -30,7 +30,7 @@ class TestToRoman(unittest.TestCase):
         self.assertEqual(func(444), "CDXLIV")
         self.assertEqual(func(999), "CMXCIX")
         self.assertEqual(func(357), "CCCLVII")
-        self.assertEqual(func(689), "DCLIIIIX")
+        self.assertEqual(func(689), "DCLXXXIX")
 
     def test_thousands(self):
         self.assertEqual(func(1000), "M")

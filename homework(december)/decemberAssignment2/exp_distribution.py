@@ -1,10 +1,10 @@
 import math
-import matplotlib.pyplot as graph
+c
 import random
 
 #  Fx(x): y = 1 - e^(-_lambda*x)  y ∈ (0,1) X = Fx^-1(y) X = -(1/_lambda) * log(x)
 
-_lambda = 10
+_lambda = 0.5
 uniform_numbers = []
 
 for i in range(10**4):
