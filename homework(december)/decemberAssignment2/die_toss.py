@@ -104,27 +104,23 @@ def plot_histogram(functionName, n = 6):
     plt.show()
 
 
-
 print(TossDie_regular())
 print(TossDie_influenced1())
 print(TossDie_influenced2())
 print(TossDie_influenced3())
-<<<<<<< HEAD
 print(TossDie_influenced4())
-=======
+
 print(TossDie_infliencedExp())
 print(TossFiveSideDie_uniform())
 print(TossSevenSideDie_uniform())
->>>>>>> f437b6ad6f43738d377ab5839c0c178b59d5cd2f
 
 plot_histogram(TossDie_regular)
 plot_histogram(TossDie_influenced1)
 plot_histogram(TossDie_influenced2)
 plot_histogram(TossDie_influenced3)
-<<<<<<< HEAD
 plot_histogram(TossDie_influenced4)
-=======
+
 plot_histogram(TossDie_infliencedExp)
 plot_histogram(TossFiveSideDie_uniform, 5)
 plot_histogram(TossSevenSideDie_uniform, 7)
->>>>>>> f437b6ad6f43738d377ab5839c0c178b59d5cd2f
+
