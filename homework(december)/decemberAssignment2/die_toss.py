@@ -1,5 +1,6 @@
 import random
 import matplotlib.pyplot as plt
+import math
 
 
 def TossDie_regular():
@@ -35,6 +36,28 @@ def TossDie_influenced3():
             return x                                    # it assigns value to the toss die
         x += 1
 
+def TossDie_influenced4():
+    _lambda = 0.5
+    probability = []
+
+    for y in range(1, 7):
+        p = _lambda * math.exp(- _lambda * y)  # probability of exponential distribution
+        probability.append(p)
+
+    sp = 0
+    for i in probability:
+        sp += i
+
+    probability_sum = 0
+    x = 1
+    random_determination = random.uniform(0, sp)
+
+    for value in probability:
+        probability_sum += value
+        if random_determination <= probability_sum:
+            return x
+        x += 1
+
 
 def plot_histogram(functionName):
 
@@ -49,12 +72,15 @@ def plot_histogram(functionName):
     plt.show()
 
 
+
 print(TossDie_regular())
 print(TossDie_influenced1())
 print(TossDie_influenced2())
 print(TossDie_influenced3())
+print(TossDie_influenced4())
 
 plot_histogram(TossDie_regular)
 plot_histogram(TossDie_influenced1)
 plot_histogram(TossDie_influenced2)
 plot_histogram(TossDie_influenced3)
+plot_histogram(TossDie_influenced4)
