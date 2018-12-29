@@ -1,0 +1,2 @@
+Mám kouzelnou kostku... Každý hod mi dá 10000 náhodných čísel v CSV.
+Bohužel se zdá že kostka nějak podvádí. Dokaž že to nejsou uniformní náhodná čísla.
