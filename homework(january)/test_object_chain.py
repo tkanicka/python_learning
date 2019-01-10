@@ -95,15 +95,21 @@ class TestChainClass(unittest.TestCase):
 
         self.assertEqual(None, self.chain1.get_value(0))
 
+        self.chain1.set_value(0, 25)
+        self.assertEqual(25, self.chain1.get_value(0))
+
+
     def test_input_set(self):
         self.assertRaises(ValueError, self.test_chain.set_value, 3)
         self.assertRaises(ValueError, self.test_chain.set_value, 4)
+
         self.assertRaises(ValueError, self.chain1.set_value, 1)
         self.assertRaises(ValueError, self.chain1.set_value, 2)
 
     def test_input_get(self):
         self.assertRaises(ValueError, self.test_chain.get_value, 3)
         self.assertRaises(ValueError, self.test_chain.get_value, 8)
+
         self.assertRaises(ValueError, self.chain1.get_value, 1)
         self.assertRaises(ValueError, self.chain1.get_value, 4)
 
