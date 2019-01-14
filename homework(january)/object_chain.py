@@ -38,16 +38,42 @@ class Chain:
         self.last_node = end_node_pushed
 
     def popEnd(self):
-        return None
+        if self.last_node.previous_node == None:
+            self.last_node = None
+            self.first_node = None
+        else:
+            self.last_node = self.last_node.previous_node
+            self.last_node.next_node = None
 
     def pushFront(self, value=0):
-        return None
+
+        first_node_pushed = Node(value)
+
+        if self.first_node == None:
+            self.first_node = first_node_pushed
+            self.last_node = first_node_pushed
+
+        first_node_pushed.next_node = self.first_node
+        self.first_node = first_node_pushed
 
     def popFront(self):
-        return None
+
+        if self.first_node.next_node == None:
+            self.first_node = None
+            self.last_node = None
+        else:
+            self.first_node = self.first_node.next_node
+            self.first_node.previous_node = None
 
     def size(self):
-        return None
+        count = self.first_node
+        size = 0
+        while count:
+            size += 1
+            count = count.next_node
+
+        print("your linked list size is: ", size)
+        return size
 
     def insert(self, index, value = 0):
         return None
@@ -56,10 +82,34 @@ class Chain:
         return None
 
     def set_value(self, index, value = 0):
-        return None
+
+        if index != 0 and index >= self.size():
+            raise ValueError("your index is out of range")
+
+        if self.first_node == None and index == 0:
+            self.first_node = Node(value)
+
+        current_node = self.first_node
+        count = 0
+        while current_node:
+            if count == index:
+                current_node.value = value
+            count += 1
+            current_node = current_node.next_node
 
     def get_value(self, index):
-        return None
+
+        if index != 0 and index >= self.size():
+            raise ValueError("your index is out of range")
+
+        current_node = self.first_node
+        count = 0
+        while current_node:
+            if count == index:
+                print("node value is: ", current_node.value)
+                return current_node.value
+            count += 1
+            current_node = current_node.next_node
 
 
 if __name__ == "__main__":

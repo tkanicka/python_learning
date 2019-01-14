@@ -36,6 +36,7 @@ class TestChainClass(unittest.TestCase):
         self.assertEqual(2, self.test_chain.last_node.value)
 
         self.chain1.first_node = Node(3)
+        self.chain1.last_node = self.chain1.first_node
         self.chain1.popEnd()
         self.assertEqual(None, self.chain1.first_node)
 
@@ -44,33 +45,35 @@ class TestChainClass(unittest.TestCase):
         self.assertEqual(4, self.test_chain.first_node.value)
         self.assertEqual(self.node1, self.test_chain.first_node.next_node)
 
-        self.chain.pushFront(1)
+        self.chain1.pushFront(1)
         self.assertEqual(1, self.chain1.first_node.value)
 
     def test_pop_start_node(self):
 
         self.test_chain.popFront()
         self.assertEqual(self.node2, self.test_chain.first_node)
-        self.assertEqual(self.node3, self.test_chain.first_node.previous_node)
+        self.assertEqual(self.node3, self.test_chain.first_node.next_node)
 
         self.chain1.first_node = Node(0)
+        self.chain1.last_node = self.chain1.first_node
         self.chain1.popFront()
         self.assertEqual(None, self.chain1.first_node)
 
     def test_chain_size(self):
-        self.test_chain.size()
-        self.assertEqual(3, self.test_chain.size)
+        self.assertEqual(3, self.test_chain.size())
         self.test_chain.pushFront(10)
-        self.assertEqual(4, self.test_chain.size)
+        self.assertEqual(4, self.test_chain.size())
 
-        self.assertEqual(0, self.chain1.size)
+        self.assertEqual(0, self.chain1.size())
 
         self.chain1.first_node = Node(1)
-        self.assertEqual(1, self.chain1.size)
+        self.assertEqual(1, self.chain1.size())
 
     def test_chain_change_insert(self):
         self.test_chain.insert(1, 44)
         self.assertEqual(44, self.node1.next_node.value)
+        self.test_chain.insert(3, 10)
+        self.assertEqual(self.node3, self.test_chain.last_node.previous_node)
 
         self.chain1.insert(0, 25)
         self.assertEqual(25, self.chain1.first_node.value)
@@ -78,6 +81,10 @@ class TestChainClass(unittest.TestCase):
     def test_chain_change_erase(self):
         self.test_chain.erase(1)
         self.assertEqual(self.test_chain.first_node, self.node3.previous_node)
+        self.assertEqual(3, self.test_chain.first_node.next_node.value)
+
+        self.test_chain.erase(2)
+        self.assertEqual(1, self.test_chain.last_node.value)
 
         self.chain1.last_node = Node(11)
         self.chain1.erase(0)
