@@ -71,7 +71,8 @@ class TestChainClass(unittest.TestCase):
 
     def test_chain_change_insert(self):
         self.test_chain.insert(1, 44)
-        self.assertEqual(44, self.node1.next_node.value)
+        self.assertEqual(44, self.test_chain.first_node.next_node.value)
+        self.assertEqual(44, self.node2.previous_node.value)
         self.test_chain.insert(3, 10)
         self.assertEqual(self.node3, self.test_chain.last_node.previous_node)
 

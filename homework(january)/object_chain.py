@@ -76,7 +76,28 @@ class Chain:
         return size
 
     def insert(self, index, value = 0):
-        return None
+        current_node = self.first_node
+        insert = Node(value)
+        count = 0
+        previous = None
+
+        if index == 0:
+            self.pushFront(value)
+
+        elif index == (self.size()-1):
+            self.pushEnd(value)
+
+        else:
+            while current_node:
+                if count == index-1:
+                    previous = current_node
+                    current_node = current_node.next_node
+                    previous.next_node = insert
+                    current_node.previous_node = insert
+                    insert.next_node = current_node
+                    
+                count += 1
+                current_node = current_node.next_node
 
     def erase(self, index,):
         return None
