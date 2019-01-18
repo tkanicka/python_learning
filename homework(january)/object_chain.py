@@ -76,6 +76,13 @@ class Chain:
         return size
 
     def insert(self, index, value = 0):
+
+        if index != 0 and index > self.size():
+            raise ValueError("your index is out of range")
+
+        if self.first_node == None and index == 0:
+            self.first_node = Node(value)
+
         current_node = self.first_node
         insert = Node(value)
         count = 0
@@ -95,12 +102,43 @@ class Chain:
                     previous.next_node = insert
                     current_node.previous_node = insert
                     insert.next_node = current_node
-                    
+
                 count += 1
                 current_node = current_node.next_node
 
-    def erase(self, index,):
-        return None
+    def erase(self, index):
+        if index != 0 and index >= self.size():
+            raise ValueError("your index is out of range")
+
+        if self.first_node == None and index == 0:
+            raise ValueError("your linked list is already empty")
+
+        current_node = self.first_node
+        count = 0
+        previous = None
+        nextVal = None
+
+        if index == 0:
+            self.popFront()
+
+        elif index == (self.size()-1):
+            self.popEnd()
+
+        else:
+            while count != index:
+
+                count += 1
+                current_node = current_node.next_node
+
+            previous = current_node.previous_node
+            nextVal = current_node.next_node
+            previous.next_node = nextVal
+            nextVal.previous_node = previous
+            current_node.previous_node = None
+            current_node.next_node = None
+
+            del current_node
+
 
     def set_value(self, index, value = 0):
 

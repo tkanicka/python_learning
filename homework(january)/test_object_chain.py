@@ -84,10 +84,11 @@ class TestChainClass(unittest.TestCase):
         self.assertEqual(self.test_chain.first_node, self.node3.previous_node)
         self.assertEqual(3, self.test_chain.first_node.next_node.value)
 
-        self.test_chain.erase(2)
+        self.test_chain.erase(1)
         self.assertEqual(1, self.test_chain.last_node.value)
 
         self.chain1.last_node = Node(11)
+        self.chain1.first_node = self.chain1.last_node
         self.chain1.erase(0)
         self.assertEqual(None, self.chain1.first_node)
 
