@@ -123,5 +123,26 @@ class TestChainClass(unittest.TestCase):
         self.assertRaises(ValueError, self.chain1.get_value, 4)
 
 
+    def test_to_pythonList(self):
+        self.assertEqual([1, 2, 3], self.test_chain.to_pythonList())
+        self.assertEqual([], self.chain1.to_pythonList())
+
+    def test_swap_nodes(self):
+        self.test_chain.swap_nodes(2, 0)
+
+        self.assertEqual(3, self.test_chain.first_node.value)
+        self.assertEqual(1, self.test_chain.last_node.value)
+
+        self.assertRaises(ValueError, self.chain1.swap_nodes, 2)
+
+    def test_sort(self):
+        self.test_chain.pushFront(5)
+        self.test_chain.pushEnd(7)
+        self.test_chain.insert(1, 4)
+        self.test_chain.sort()
+
+        self.assertEqual([1, 2, 3, 4, 5, 7], self.test_chain.to_pythonList())
+
+
 if __name__ == "__main__":
     unittest.main()

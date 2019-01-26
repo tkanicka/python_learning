@@ -1,3 +1,4 @@
+import copy
 
 class Node:
     def __init__(self, value=0):
@@ -11,7 +12,7 @@ class Chain:
         self.first_node = None
         self.last_node = None
 
-    def PrintChain(self):
+    def printChain(self):
         print_node = self.first_node
 
         while print_node:
@@ -19,7 +20,7 @@ class Chain:
             print(print_node.value)
             print_node = print_node.next_node
 
-    def PrintChain_backwards(self):
+    def printChain_backwards(self):
         print_node = self.last_node
 
         while print_node:
@@ -29,13 +30,13 @@ class Chain:
 
     def pushEnd(self, value=0):
         end_node_pushed = Node(value)
-
+        list_size = self.size()
         if self.last_node == None:
             self.last_node = end_node_pushed
             self.first_node = end_node_pushed
-
-        end_node_pushed.previous_node = self.last_node
-        self.last_node = end_node_pushed
+        else:
+            self.last_node.next_node = end_node_pushed
+            self.swap_nodes(list_size - 2, list_size - 1)
 
     def popEnd(self):
         if self.last_node.previous_node == None:
@@ -53,8 +54,9 @@ class Chain:
             self.first_node = first_node_pushed
             self.last_node = first_node_pushed
 
-        first_node_pushed.next_node = self.first_node
-        self.first_node = first_node_pushed
+        else:
+            first_node_pushed.next_node = self.first_node
+            self.first_node = first_node_pushed
 
     def popFront(self):
 
@@ -72,21 +74,28 @@ class Chain:
             size += 1
             count = count.next_node
 
-        print("your linked list size is: ", size)
         return size
+
+    def print_size(self):
+        print(self.size())
+
+    def __find_node(self, index):
+
+        if self.first_node == None:
+            return None
+
+        current_node = self.first_node
+        count = 0
+        while current_node:
+            if count == index:
+                return current_node
+            count += 1
+            current_node = current_node.next_node
 
     def insert(self, index, value = 0):
 
         if index != 0 and index > self.size():
             raise ValueError("your index is out of range")
-
-        if self.first_node == None and index == 0:
-            self.first_node = Node(value)
-
-        current_node = self.first_node
-        insert = Node(value)
-        count = 0
-        previous = None
 
         if index == 0:
             self.pushFront(value)
@@ -95,6 +104,11 @@ class Chain:
             self.pushEnd(value)
 
         else:
+            current_node = self.first_node
+            insert = Node(value)
+            count = 0
+            previous = None
+
             while current_node:
                 if count == index-1:
                     previous = current_node
@@ -102,6 +116,7 @@ class Chain:
                     previous.next_node = insert
                     current_node.previous_node = insert
                     insert.next_node = current_node
+                    break
 
                 count += 1
                 current_node = current_node.next_node
@@ -113,10 +128,6 @@ class Chain:
         if self.first_node == None and index == 0:
             raise ValueError("your linked list is already empty")
 
-        current_node = self.first_node
-        count = 0
-        previous = None
-        nextVal = None
 
         if index == 0:
             self.popFront()
@@ -125,6 +136,11 @@ class Chain:
             self.popEnd()
 
         else:
+            current_node = self.first_node
+            count = 0
+            previous = None
+            nextVal = None
+
             while count != index:
 
                 count += 1
@@ -148,27 +164,68 @@ class Chain:
         if self.first_node == None and index == 0:
             self.first_node = Node(value)
 
-        current_node = self.first_node
-        count = 0
-        while current_node:
-            if count == index:
-                current_node.value = value
-            count += 1
-            current_node = current_node.next_node
+        current_node = self.__find_node(index)
+
+        current_node.value = value
 
     def get_value(self, index):
 
         if index != 0 and index >= self.size():
             raise ValueError("your index is out of range")
 
+        current_node = self.__find_node(index)
+
+        if current_node == None:
+            return None
+
+        return current_node.value
+
+    def to_pythonList(self):            # making a classic python 1d list of values
+        newList = []
         current_node = self.first_node
-        count = 0
+
         while current_node:
-            if count == index:
-                print("node value is: ", current_node.value)
-                return current_node.value
-            count += 1
+            newList.append(current_node.value)
             current_node = current_node.next_node
+
+        return newList
+
+    def swap_nodes(self, index1 = 0, index2 = 1):
+
+        if self.size() <= 1:
+            raise ValueError("you can't swap(your linked list has less than 2 nodes")
+
+        else:
+            current_node1 = self.__find_node(index1)
+            current_node2 = self.__find_node(index2)
+
+        if current_node1 == None or current_node2 == None:
+
+            raise ValueError("you can't swap (your input is invalid index")
+
+        help_node = copy.deepcopy(current_node1)
+
+        current_node1.value = current_node2.value
+        current_node2.value = help_node.value
+
+        del help_node
+
+
+    def sort(self):
+        list_size = self.size()
+
+        if list_size == 0 or list_size == 1:
+            return None
+
+        else:
+            for y in range(list_size):
+                for x in range(list_size):
+                    current_node = self.__find_node(x)
+
+                    if current_node.next_node != None:
+
+                        if current_node.value > current_node.next_node.value:
+                            self.swap_nodes(x, x+1)
 
 
 if __name__ == "__main__":
@@ -198,3 +255,4 @@ if __name__ == "__main__":
     chain1.pushEnd(6)
     print(chain1.last_node.value)
     print(chain1.last_node.previous_node.value)
+
