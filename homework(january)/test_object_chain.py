@@ -143,6 +143,8 @@ class TestChainClass(unittest.TestCase):
 
         self.assertEqual([1, 2, 3, 4, 5, 7], self.test_chain.to_pythonList())
 
+    def test_check_ifSorted(self):
+        self.assertEqual(True, self.test_chain.check_ifSorted())
 
 if __name__ == "__main__":
     unittest.main()

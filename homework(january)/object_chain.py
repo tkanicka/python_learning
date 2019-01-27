@@ -30,13 +30,14 @@ class Chain:
 
     def pushEnd(self, value=0):
         end_node_pushed = Node(value)
-        list_size = self.size()
+
         if self.last_node == None:
             self.last_node = end_node_pushed
             self.first_node = end_node_pushed
         else:
+            end_node_pushed.previous_node = self.last_node
             self.last_node.next_node = end_node_pushed
-            self.swap_nodes(list_size - 2, list_size - 1)
+            self.last_node = end_node_pushed
 
     def popEnd(self):
         if self.last_node.previous_node == None:
@@ -191,9 +192,13 @@ class Chain:
         return newList
 
     def swap_nodes(self, index1 = 0, index2 = 1):
+        list_size = self.size()
 
         if self.size() <= 1:
             raise ValueError("you can't swap(your linked list has less than 2 nodes")
+
+        elif index1 >= list_size or index2 >= list_size:
+            raise ValueError("your index is out of range")
 
         else:
             current_node1 = self.__find_node(index1)
@@ -203,13 +208,22 @@ class Chain:
 
             raise ValueError("you can't swap (your input is invalid index")
 
-        help_node = copy.deepcopy(current_node1)
+        value1 = current_node1.value
 
         current_node1.value = current_node2.value
-        current_node2.value = help_node.value
+        current_node2.value = value1
 
-        del help_node
+    def check_ifSorted(self):
+        current = self.first_node
 
+        while current:
+            if current.value <= current.next_node.value:
+                continue
+            else:
+                return False
+            current = current.next_node
+
+        return True
 
     def sort(self):
         list_size = self.size()
@@ -217,15 +231,17 @@ class Chain:
         if list_size == 0 or list_size == 1:
             return None
 
-        else:
-            for y in range(list_size):
-                for x in range(list_size):
-                    current_node = self.__find_node(x)
+        if self.check_ifSorted()== True:
+            return None
 
-                    if current_node.next_node != None:
+        for y in range(0, list_size):
+            for x in range(0, list_size):
+                current_node = self.__find_node(x)
 
-                        if current_node.value > current_node.next_node.value:
-                            self.swap_nodes(x, x+1)
+                if current_node.next_node != None:
+
+                    if current_node.value > current_node.next_node.value:
+                        self.swap_nodes(x, x+1)
 
 
 if __name__ == "__main__":
