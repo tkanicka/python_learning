@@ -200,13 +200,11 @@ class Chain:
         elif index1 >= list_size or index2 >= list_size:
             raise ValueError("your index is out of range")
 
-        else:
-            current_node1 = self.__find_node(index1)
-            current_node2 = self.__find_node(index2)
+        elif index1 == index2:
+            return None
 
-        if current_node1 == None or current_node2 == None:
-
-            raise ValueError("you can't swap (your input is invalid index")
+        current_node1 = self.__find_node(index1)
+        current_node2 = self.__find_node(index2)
 
         value1 = current_node1.value
 
@@ -217,10 +215,12 @@ class Chain:
         current = self.first_node
 
         while current:
+
             if current.value <= current.next_node.value:
                 continue
             else:
                 return False
+
             current = current.next_node
 
         return True
