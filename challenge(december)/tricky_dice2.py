@@ -20,14 +20,14 @@ for row in reader:
 data = make_int(data)
 
 data10 = []
-for x in range(0, len(data), 3):
+for x in range(1, len(data), 3):
     data10.append(data[x])
 
 plt.hist(data10, 6, rwidth=0.9)
 plt.grid(True)
 plt.xlabel("values ")
 plt.ylabel("frequency")
-plt.title("tricky every 3 number")
+plt.title("tricky every 3. number(from second)")
 plt.show()
 
 
