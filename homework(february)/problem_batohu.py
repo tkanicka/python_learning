@@ -1,5 +1,5 @@
 # tohle je asi nejvíc debilní způsob jak to dělat vzhledem k tomu,
-# že tetuju u každý položky 2 případy (použiju, nepoužiju) a pak to mezi sebou porovnávám...
+# že tesuju u každý položky 2 případy (použiju, nepoužiju) a pak to mezi sebou porovnávám...
 # opravdu mě ale nenapadá nic lepšího(rychlejšího a jednoduššího) než testovat všechny kombinace
 # i když předpokládám, že s tímhle mě asi pošleš doháje...
 
@@ -16,14 +16,10 @@ def max_bag_value(bag_capacity, item_price, item_weight, n = 0):
 
     if item_weight[n] <= bag_capacity:
         n += 1
-        value1 = item_price[n-1] + max_bag_value(bag_capacity-item_weight[n-1], item_price, item_weight, n)
-        value2 = max_bag_value(bag_capacity, item_price, item_weight, n)
-
+        return max(item_price[n-1] + max_bag_value(bag_capacity-item_weight[n-1], item_price, item_weight, n), max_bag_value(bag_capacity, item_price, item_weight, n))
     else:
         n += 1
         return max_bag_value(bag_capacity, item_price, item_weight, n)
 
-    return max(value1, value2)
-
-
+    
 print(max_bag_value(bag_capacity, item_price, item_weight, 0))
