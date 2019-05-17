@@ -72,19 +72,25 @@ class StateGenerator:
         self.index = i
 
 
-
 class KnapsackProblem:
 
     def __init__(self, capacity, prices, weights):
-        self.capacity = capacity
+        self.capacity = int(capacity)
         self.prices = prices
         self.weights = weights
 
     def solver(self):
+
+        if self.capacity >= sum(weights):
+
+            return(StateGenerator(0, [1]*len(self.prices), self.prices, self.weights))
+
         best_state = StateGenerator(0, [0] * len(self.prices), self.prices, self.weights)
+
+        max_index = len(self.prices)  # the len of items is constant, I don't want to calculate it in every loop
+
         root_state = StateGenerator(0, [0] * len(self.prices), self.prices, self.weights)
         stack = [root_state]
-        max_index = len(root_state.prices)
 
         while len(stack) > 0:
             current_state = stack.pop()
@@ -94,15 +100,15 @@ class KnapsackProblem:
                 best_state = current_state
 
             if index < max_index:
-                if current_state.weight + self.weights[index] <= self.capacity:
+                if current_state.weight + self.weights[index] <= self.capacity:        # If possible take in the item
                     next_taken = current_state.get_NextState()
                     if next_taken.value > best_state.value:
                         best_state = next_taken
 
                     stack.append(next_taken)
 
-                next_nonTaken = StateGenerator(index+1,current_state.taken,prices,weights)
-                stack.append(next_nonTaken)
+                next_nonTaken = StateGenerator(index+1, current_state.taken, prices, weights)
+                stack.append(next_nonTaken)     # anyway, try the next state, without taking the item
 
         return best_state
 
@@ -110,6 +116,5 @@ if __name__ == "__main__":
     prices = [5, 10, 25, 13, 42, 12, 10, 17, 25, 35]
     weights = [5, 75, 15, 10, 20, 25, 20, 15, 10, 5]
 
-
-    knapsack = KnapsackProblem(15,prices,weights)
+    knapsack = KnapsackProblem(15, prices, weights)
     print(knapsack.solver().value)
