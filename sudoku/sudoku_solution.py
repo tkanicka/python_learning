@@ -61,6 +61,34 @@ def check_sudoka(sudoka):
       return True
 
 
+def solve_sudoka(sudoka):
+      if find_empty(sudoka) == None and check_sudoka(sudoka) == True:
+            return sudoka
+
+      else:
+            states = [sudoka]
+            while len(states)>0:
+                  current_sudoka = states.pop()
+                  if check_sudoka(current_sudoka) == True:
+
+                        if find_empty(current_sudoka) == None:
+                              return current_sudoka
+
+                        else:
+                              print(current_sudoka)
+                              position = find_empty(current_sudoka)
+                              for position_value in range(10):
+                                    if check_square(current_sudoka,position, position_value) \
+                                            and check_column(current_sudoka,position, position_value)\
+                                            and check_row(current_sudoka,position, position_value) == True:
+                                          current_sudoka[position[0]][position[1]] == position_value
+                                          states.append(current_sudoka)
+
+                                    current_sudoka[position[0]][position[1]] == 0
+            return False
+
+print(solve_sudoka(s1))
+
 
 
 

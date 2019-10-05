@@ -17,6 +17,16 @@ class TestSudoka_solution(unittest.TestCase):
               [4, 0, 7, 0, 0, 0, 8, 0, 0],
               [6, 0, 0, 4, 0, 0, 9, 0, 3]]
 
+        self.s_invalid = [[2, 0, 4, 0, 0, 8, 0, 0, 9],
+                   [0, 0, 9, 0, 0, 0, 2, 0, 8],
+                   [0, 6, 0, 0, 0, 2, 0, 3, 0],
+                   [0, 2, 5, 0, 8, 6, 0, 0, 4],
+                   [0, 4, 6, 0, 0, 0, 7, 8, 0],
+                   [7, 0, 0, 2, 0, 0, 5, 6, 0],
+                   [0, 9, 0, 6, 0, 0, 0, 2, 0],
+                   [4, 2, 7, 0, 0, 5, 8, 0, 0],
+                   [6, 0, 0, 4, 0, 0, 9, 0, 3]]
+
         self.s1s = [[2, 7, 4, 3, 1, 8, 6, 5, 9],
                [3, 1, 9, 7, 6, 5, 2, 4, 8],
                [5, 6, 8, 9, 4, 2, 1, 3, 7],
@@ -38,6 +48,7 @@ class TestSudoka_solution(unittest.TestCase):
     def test_check_sudoka(self):
         self.assertEqual(True,check_sudoka(self.s1s))
         self.assertEqual(True,check_sudoka(self.s1))
+        self.assertEqual(False, check_sudoka(self.s_invalid))
 
 if __name__ == "__main__":
     unittest.main()
